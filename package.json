@@ -1,0 +1,49 @@
+{
+  "name": "stockmarket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server/index.js",
+    "dev:server": "better-npm-run dev:server"
+  },
+  "betterScripts": {
+    "dev:server": {
+      "command": "nodemon --ignore src/client src/server/index.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jomcode/fcc-stockmarket.git"
+  },
+  "author": "John <jomcode@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jomcode/fcc-stockmarket/issues"
+  },
+  "homepage": "https://github.com/jomcode/fcc-stockmarket#readme",
+  "devDependencies": {
+    "better-npm-run": "0.0.8",
+    "dotenv": "^2.0.0",
+    "eslint": "^2.10.2",
+    "eslint-config-standard": "^5.3.1",
+    "eslint-plugin-promise": "^1.1.0",
+    "eslint-plugin-standard": "^1.3.2",
+    "nodemon": "^1.9.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "compression": "^1.6.2",
+    "cors": "^2.7.1",
+    "feathers": "^2.0.1",
+    "feathers-configuration": "^0.3.0",
+    "feathers-errors": "^2.1.0",
+    "feathers-hooks": "^1.5.3",
+    "winston": "^2.2.0"
+  }
+}
