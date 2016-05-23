@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-import feathers from '../../services/feathers';
+import Feathers from '../../services/feathers';
 
 class App extends Component {
 
-  componentDidMount() {}
+  componentDidMount() {
+    Feathers.getStock('FB');
+  }
 
   render() {
     return (

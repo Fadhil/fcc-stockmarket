@@ -6,4 +6,6 @@ const key = process.env.QUANDL_API_KEY;
 const rootUrl = 'https://www.quandl.com/api/v3';
 
 module.exports = {
+  key,
+  rootUrl
 };

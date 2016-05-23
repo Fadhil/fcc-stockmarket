@@ -21,8 +21,8 @@ app.use(compress())
   .use('/', serveStatic(app.get('public')))
   .use(bodyParser.json())
   .configure(hooks())
-  .configure(socketio(function(io) {
-    io.on('connection', function(socket) {
+  .configure(socketio((io) => {
+    io.on('connection', (/* socket */) => {
       console.log('io connection!');
     });
   }))

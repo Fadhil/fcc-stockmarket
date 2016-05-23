@@ -8,8 +8,18 @@ const rootUrl = process.env.NODE_ENV === 'production' ?
   'http://localhost:3030';
 
 const socket = io(rootUrl);
-const app = feathers()
-  .configure(socketio(socket))
-  .configure(hooks());
 
-export default app;
+function FeathersService() {
+  this.app = feathers()
+    .configure(socketio(socket))
+    .configure(hooks());
+}
+
+FeathersService.prototype.getStock = function getStock(id) {
+  this.app.service('quandl').get(id)
+    .then(r => console.log('getStock', r))
+    .catch(e => console.log('getStock error', e));
+};
+
+const service = new FeathersService();
+export default service;
