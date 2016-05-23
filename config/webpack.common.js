@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const helpers = require('./helpers');
 
@@ -37,6 +38,14 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loaders: ['babel'],
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css!postcss'),
+        include: [
+          path.join(helpers.sourceDir, 'vendor.js'),
+          path.join(__dirname, '..', 'node_modules', 'normalize.css')
+        ]
       }
     ]
   },
@@ -59,5 +68,6 @@ module.exports = {
     module: false,
     clearImmediate: false,
     setImmediate: false
-  }
+  },
+  postcss: () => [autoprefixer]
 };

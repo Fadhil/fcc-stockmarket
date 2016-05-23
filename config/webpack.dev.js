@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
@@ -15,7 +16,17 @@ const devPlugins = [
 
 if (helpers.isHot) devPlugins.push(new webpack.HotModuleReplacementPlugin());
 
+const hotEntry = {
+  reacthotloader: 'react-hot-loader/patch',
+  webpackdevserver: 'webpack-dev-server/client?http://localhost:8080',
+  onlydevserver: 'webpack/hot/only-dev-server',
+  polyfills: path.join(helpers.sourceDir, 'polyfills.js'),
+  vendor: path.join(helpers.sourceDir, 'vendor.js'),
+  main: helpers.mainPath
+};
+
 module.exports = webpackMerge(commonConfig, {
+  entry: helpers.isHot ? hotEntry : undefined,
   debug: true,
   devtool: 'cheap-module-source-map',
   output: {
@@ -36,7 +47,7 @@ module.exports = webpackMerge(commonConfig, {
     stats: {
       chunks: false,
       colors: true,
-      timings: false,
+      timings: true,
       version: false,
       hash: false,
       assets: false,
