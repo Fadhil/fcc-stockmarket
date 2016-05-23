@@ -10,7 +10,7 @@
     "dev:server": "better-npm-run dev:server",
     "dev:client": "better-npm-run dev:client",
     "dev:client:hot": "better-npm-run dev:client:hot",
-    "dev:hot": ""
+    "dev:hot": "better-npm-run dev:hot"
   },
   "betterScripts": {
     "dev:server": {
@@ -32,6 +32,9 @@
         "NODE_ENV": "development",
         "HMR": "enabled"
       }
+    },
+    "dev:hot": {
+      "command": "concurrent -k \"npm run dev:server\" \"npm run dev:client:hot\""
     }
   },
   "repository": {

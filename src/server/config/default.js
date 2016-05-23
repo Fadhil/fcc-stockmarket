@@ -1,5 +1,5 @@
 module.exports = {
-  host: 'foo',
+  host: 'localhost',
   port: process.env.PORT || 3030,
   public: '../../../dist'
 };
