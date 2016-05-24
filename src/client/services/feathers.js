@@ -13,12 +13,37 @@ function FeathersService() {
   this.app = feathers()
     .configure(socketio(socket))
     .configure(hooks());
+
+  this.stockService = this.app.service('stock');
+  this.quandlService = this.app.service('quandl');
+
+  this.stockService.on('created', (d) => {
+    console.log('created!', d);
+  });
+
+  this.stockService.on('updated', (d) => {
+    console.log('updated!', d);
+  });
+
+  this.stockService.on('patched', (d) => {
+    console.log('patched!', d);
+  });
+
+  this.stockService.on('removed', (d) => {
+    console.log('removed!', d);
+  });
 }
 
-FeathersService.prototype.getStock = function getStock(id) {
-  this.app.service('quandl').get(id)
-    .then(r => console.log('getStock', r))
+FeathersService.prototype.getStock = function addStock(id) {
+  this.quandlService.get(id)
+    .then(r => console.log('getStock success', r !== undefined))
     .catch(e => console.log('getStock error', e));
+};
+
+FeathersService.prototype.synchronize = function synchronize() {
+  this.stockService.find()
+    .then(r => console.log('synchronize', r))
+    .catch(e => console.error('synchronize error', e));
 };
 
 const service = new FeathersService();

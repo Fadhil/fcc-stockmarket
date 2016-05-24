@@ -6,6 +6,7 @@ class App extends Component {
 
   componentDidMount() {
     Feathers.getStock('FB');
+    Feathers.synchronize();
   }
 
   render() {
