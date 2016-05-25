@@ -55,7 +55,7 @@ class App extends Component {
 
         <StockChart stocks={stocks} />
 
-        <CurrentStocks />
+        <CurrentStocks stockSymbols={Object.keys(stocks)} />
       </div>
     );
   }
