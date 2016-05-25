@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import Feathers from '../../services/feathers';
+import AddStock from '../addstock/addstock';
 import StockChart from '../stockchart/stockchart';
+import CurrentStocks from '../currentstocks/currentstocks';
 
 class App extends Component {
   constructor(props) {
@@ -18,22 +20,28 @@ class App extends Component {
         this.setState(updatedState);
       }
     );
+
+    this.handleAddStock = this.handleAddStock.bind(this);
   }
 
   componentDidMount() {
-    const { stocks } = this.state;
-    Feathers.synchronize()
+    // const { stocks } = this.state;
+    Feathers.synchronize();
     /* Get Data For Development Purposes */
-      .then(() => {
-        if (Object.keys(stocks).length < 1) {
-          Feathers.getStock('FB');
-          Feathers.getStock('TOL');
-        }
-      });
+      // .then(() => {
+        // if (Object.keys(stocks).length < 1) {
+          // Feathers.getStock('FB');
+          // Feathers.getStock('TOL');
+        // }
+      // });
   }
 
   componentWillUnmount() {
     this.stateSubscription.unsubscribe();
+  }
+
+  handleAddStock(s) {
+    Feathers.getStock(s);
   }
 
   render() {
@@ -43,7 +51,11 @@ class App extends Component {
       <div>
         <p>number of stocks: {Object.keys(stocks).length}</p>
 
+        <AddStock handler={this.handleAddStock} />
+
         <StockChart stocks={stocks} />
+
+        <CurrentStocks />
       </div>
     );
   }
