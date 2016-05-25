@@ -36,6 +36,11 @@ FeathersService.prototype.getStock = function getStock(id) {
     .then(result => this.stateService.setStock(result));
 };
 
+FeathersService.prototype.removeStock = function removeStock(id) {
+  return this.stockService.remove(id);
+    // .then(result => this.stateService.removeStock(result));
+};
+
 FeathersService.prototype.synchronize = function synchronize() {
   return this.stockService.find()
     .then(result => this.stateService.sync(result));

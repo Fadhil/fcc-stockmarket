@@ -12,11 +12,8 @@ class App extends Component {
 
     this.stateSubscription = Feathers.stateService.state$.subscribe(
       (s) => {
-        const updatedStocks = Object.assign({}, this.state.stocks, s);
-        console.log('updatedStocks', updatedStocks);
-
-        const updatedState = Object.assign({}, this.state, { stocks: updatedStocks });
-
+        const stocks = Object.assign({}, this.state.stocks, s);
+        const updatedState = Object.assign({}, this.state, { stocks });
         this.setState(updatedState);
       }
     );
