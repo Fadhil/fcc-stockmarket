@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Feathers from '../../services/feathers';
+import StockChart from '../stockchart/stockchart';
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,8 @@ class App extends Component {
     return (
       <div>
         <p>number of stocks: {Object.keys(stocks).length}</p>
+
+        <StockChart stocks={stocks} />
       </div>
     );
   }
