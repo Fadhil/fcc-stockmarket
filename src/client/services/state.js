@@ -13,11 +13,10 @@ StateService.prototype.setStock = function setStock(d) {
 };
 
 StateService.prototype.removeStock = function removeStock(d) {
-  console.log('#removeStock arg', d);
+  if (!this.state[d]) return;
   const updatedState = Object.assign({}, this.state);
   delete updatedState[d];
   this.state = updatedState;
-  console.log('#removeStock this.state', this.state);
 };
 
 StateService.prototype.sync = function sync(s) {

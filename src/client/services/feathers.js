@@ -27,23 +27,20 @@ FeathersService.prototype.initialize = function initialize() {
   });
 
   this.stockService.on('removed', (d) => {
-    console.log('removed!', d);
+    this.stateService.removeStock(d);
   });
 };
 
 FeathersService.prototype.getStock = function getStock(id) {
-  this.stockService.get(id)
-    .then(result => this.stateService.setStock(result))
-    .catch(e => console.error('getStock', e));
+  return this.stockService.get(id)
+    .then(result => this.stateService.setStock(result));
 };
 
 FeathersService.prototype.synchronize = function synchronize() {
-  this.stockService.find()
-    .then(result => this.stateService.sync(result))
-    .catch(e => console.error('synchronize error', e));
+  return this.stockService.find()
+    .then(result => this.stateService.sync(result));
 };
 
 const service = new FeathersService();
-// service.initialize.bind(service)();
 service.initialize();
 export default service;
