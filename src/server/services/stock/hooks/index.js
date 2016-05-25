@@ -4,11 +4,11 @@ const beforeGet = hook => {
   const stockService = hook.app.service('stock');
   const stockId = hook.id;
 
-  /* eslint-disable no-param-reassign */
   if (stockService.state[stockId]) {
+    /* eslint-disable no-param-reassign */
     hook.result = { [stockId]: stockService.state[stockId] };
+    /* eslint-enable no-param-reassign */
   }
-  /* eslint-enable no-param-reassign */
 };
 
 const afterGet = hook => {

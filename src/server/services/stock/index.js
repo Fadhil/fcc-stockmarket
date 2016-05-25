@@ -28,7 +28,10 @@ class Service {
     return Promise.resolve(stock);
   }
 
-  // remove(id) {}
+  remove(id) {
+    delete this.state[id];
+    return Promise.resolve(id);
+  }
 }
 
 module.exports = function bootstrapStockService() {

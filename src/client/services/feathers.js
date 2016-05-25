@@ -33,7 +33,7 @@ FeathersService.prototype.initialize = function initialize() {
 
 FeathersService.prototype.getStock = function getStock(id) {
   this.stockService.get(id)
-    .then(r => console.log('getStock success', r))
+    .then(result => this.stateService.setStock(result))
     .catch(e => console.error('getStock', e));
 };
 
