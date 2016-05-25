@@ -88,7 +88,6 @@
     "feathers-configuration": "^0.3.0",
     "feathers-errors": "^2.1.0",
     "feathers-hooks": "^1.5.3",
-    "feathers-memory": "^0.7.1",
     "feathers-socketio": "^1.4.0",
     "got": "^6.3.0",
     "normalize.css": "^4.1.1",
