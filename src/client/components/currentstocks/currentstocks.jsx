@@ -6,17 +6,19 @@ class CurrentStocks extends Component {
   }
 
   render() {
-    const { stockSymbols } = this.props;
+    const { currentStocks } = this.props;
 
     return (
       <div>
         <h2>Current Stocks</h2>
         {
-          stockSymbols.map(s =>
-            <div key={s}>
-              {s}
+          currentStocks.length > 0 ?
+          currentStocks.map(s =>
+            <div key={s.symbol}>
+              {s.symbol} : {s.name}
             </div>
-          )
+          ) :
+          null
         }
       </div>
     );

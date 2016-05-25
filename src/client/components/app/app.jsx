@@ -22,18 +22,11 @@ class App extends Component {
     );
 
     this.handleAddStock = this.handleAddStock.bind(this);
+    this.handleRemoveStock = this.handleRemoveStock.bind(this);
   }
 
   componentDidMount() {
-    // const { stocks } = this.state;
     Feathers.synchronize();
-    /* Get Data For Development Purposes */
-      // .then(() => {
-        // if (Object.keys(stocks).length < 1) {
-          // Feathers.getStock('FB');
-          // Feathers.getStock('TOL');
-        // }
-      // });
   }
 
   componentWillUnmount() {
@@ -42,6 +35,10 @@ class App extends Component {
 
   handleAddStock(s) {
     Feathers.getStock(s);
+  }
+
+  handleRemoveStock(s) {
+    console.log('#handleRemoveStock', s);
   }
 
   render() {
@@ -55,7 +52,16 @@ class App extends Component {
 
         <StockChart stocks={stocks} />
 
-        <CurrentStocks stockSymbols={Object.keys(stocks)} />
+        <CurrentStocks
+          currentStocks={
+            Object.keys(stocks).length > 0 ?
+              Object.keys(stocks).map(s => ({
+                symbol: s,
+                name: stocks[s].name
+              })) :
+              []
+          }
+        />
       </div>
     );
   }
