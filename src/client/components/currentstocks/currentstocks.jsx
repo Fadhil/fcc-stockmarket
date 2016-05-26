@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 
+import Stock from './stock';
+
 class CurrentStocks extends Component {
   render() {
     const { currentStocks, removeHandler } = this.props;
 
     return (
-      <div>
-        <h2>Current Stocks</h2>
+      <div className="currentstocks-container">
+        <h3>Current Stocks</h3>
+
+        <div className="currentstocks-list">
         {
           currentStocks.length > 0 ?
           currentStocks.map(s =>
-            <div key={s.symbol}>
-              <div>
-                {s.symbol} : {s.name}
-                <button data-symbol={s.symbol} onClick={removeHandler}>Remove</button>
-              </div>
-            </div>
+            <Stock
+              key={s.symbol}
+              symbol={s.symbol}
+              name={s.name}
+              removeHandler={removeHandler}
+            />
           ) :
           null
         }
+        </div>
       </div>
     );
   }
