@@ -1,11 +1,10 @@
-const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const commonConfig = require('./webpack.common');
 const helpers = require('./helpers');
-console.log(__dirname);
+
 module.exports = webpackMerge(commonConfig, {
   debug: false,
   devtool: 'source-map',
@@ -18,7 +17,7 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     new CleanWebpackPlugin(['!dist/.gitkeep', 'dist/**/*.*'], {
       verbose: true,
-      root: path.join(__dirname)
+      root: helpers.rootDir
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({

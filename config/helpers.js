@@ -1,5 +1,6 @@
 const path = require('path');
 
+const rootDir = path.join(__dirname, '..');
 const sourceDir = path.join(__dirname, '..', 'src', 'client');
 const mainPath = path.join(__dirname, '..', 'src', 'client/main.js');
 const outputDir = path.join(__dirname, '..', 'dist');
@@ -10,6 +11,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 const isTest = process.env.NODE_ENV === 'test';
 const isHot = process.env.HMR === 'enabled';
 
+module.exports.rootDir = rootDir;
 module.exports.sourceDir = sourceDir;
 module.exports.mainPath = mainPath;
 module.exports.outputDir = outputDir;

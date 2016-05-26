@@ -7,8 +7,6 @@
 /tsd_typings/
 
 # Output directories & files
-/dist/**
-!dist/.gitkeep
 /build/**
 .webpack.json
 
