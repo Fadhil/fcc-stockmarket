@@ -48,15 +48,17 @@ class AddStock extends Component {
     const { textInput } = this.state;
 
     return (
-      <div>
+      <div className="addstock-container">
         <form onSubmit={this.handleFormSubmit}>
-          <input
-            value={textInput}
-            onChange={this.handleTextInput}
-            type="text"
-          />
-
-          <button type="submit" onClick={this.handleButtonInput}>Add</button>
+          <div className="input-group">
+            <input
+              value={textInput}
+              onChange={this.handleTextInput}
+              placeholder="Add stock by symbol..."
+              type="text"
+            />
+            <button type="submit" onClick={this.handleButtonInput}>Add</button>
+          </div>
         </form>
       </div>
     );
