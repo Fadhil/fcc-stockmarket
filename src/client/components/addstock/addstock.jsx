@@ -10,6 +10,7 @@ class AddStock extends Component {
 
     this.handleTextInput = this.handleTextInput.bind(this);
     this.handleButtonInput = this.handleButtonInput.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.clearState = this.clearState.bind(this);
   }
 
@@ -22,8 +23,19 @@ class AddStock extends Component {
   handleButtonInput() {
     const { handler } = this.props;
     const { textInput } = this.state;
+
+    if (textInput.trim() < 1) {
+      this.clearState();
+      return;
+    }
+
     handler(textInput);
     this.clearState();
+  }
+
+  handleFormSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
   }
 
   clearState() {
@@ -37,17 +49,15 @@ class AddStock extends Component {
 
     return (
       <div>
-
-        <div>
+        <form onSubmit={this.handleFormSubmit}>
           <input
             value={textInput}
             onChange={this.handleTextInput}
             type="text"
           />
 
-          <button onClick={this.handleButtonInput}>Add</button>
-        </div>
-
+          <button type="submit" onClick={this.handleButtonInput}>Add</button>
+        </form>
       </div>
     );
   }

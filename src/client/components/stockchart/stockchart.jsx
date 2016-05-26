@@ -3,6 +3,11 @@ import { Line as LineChart } from 'react-chartjs';
 
 import { getRandomHexColors } from '../../utilities/randomcolor';
 
+const months = [
+  'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+  'September', 'October', 'November', 'December'
+];
+
 class StockChart extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +20,8 @@ class StockChart extends Component {
 
     const symbols = Object.keys(stocks);
     const hexColors = getRandomHexColors(symbols.length);
-    const labels = stocks[symbols[0]].data.map(d => d[0]);
+    // const labels = stocks[symbols[0]].data.map(d => d[0]);
+    const labels = months.slice(0);
     const datasets = symbols.map((s, i) => {
       const data = stocks[s].data.map(d => d[4]);
       return Object.assign({}, {
