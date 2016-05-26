@@ -21,11 +21,7 @@ app.use(compress())
   .use('/', serveStatic(app.get('public')))
   .use(bodyParser.json())
   .configure(hooks())
-  .configure(socketio((io) => {
-    io.on('connection', (/* socket */) => {
-      console.log('io connection!');
-    });
-  }))
+  .configure(socketio())
   .configure(services)
   .configure(middleware);
 

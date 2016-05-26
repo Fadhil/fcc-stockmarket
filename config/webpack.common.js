@@ -46,6 +46,11 @@ module.exports = {
           path.join(helpers.sourceDir, 'vendor.js'),
           path.join(__dirname, '..', 'node_modules', 'normalize.css')
         ]
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
+        exclude: /node_modules/
       }
     ]
   },
@@ -59,7 +64,7 @@ module.exports = {
       template: path.join(helpers.sourceDir, 'index.html'),
       chunksSortMode: 'dependency'
     }),
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('[name].css')
   ],
 
   node: {
