@@ -51,14 +51,16 @@ class StockChart extends Component {
       null;
 
     return (
-      <div>
-        <h2>Stock Data for 2015 (monthly)</h2>
+      <div className="stockchart-container">
+        <h2>2015 Stock Data</h2>
 
-        {
-          config !== null ?
-            <LineChart data={config.data} options={config.options} redraw /> :
-            null
-        }
+        <div>
+          {
+            config !== null ?
+              <LineChart data={config.data} options={config.options} redraw /> :
+              null
+          }
+        </div>
       </div>
     );
   }
