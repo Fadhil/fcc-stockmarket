@@ -57,7 +57,12 @@ class StockChart extends Component {
         <div>
           {
             config !== null ?
-              <LineChart data={config.data} options={config.options} redraw /> :
+              <LineChart
+                data={config.data}
+                options={config.options}
+                redraw
+                generateLegend
+              /> :
               null
           }
         </div>
