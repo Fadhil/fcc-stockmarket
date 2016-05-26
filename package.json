@@ -10,7 +10,8 @@
     "dev:server": "better-npm-run dev:server",
     "dev:client": "better-npm-run dev:client",
     "dev:client:hot": "better-npm-run dev:client:hot",
-    "dev:hot": "better-npm-run dev:hot"
+    "dev:hot": "better-npm-run dev:hot",
+    "build:client": "better-npm-run build:client"
   },
   "betterScripts": {
     "dev:server": {
@@ -35,6 +36,12 @@
     },
     "dev:hot": {
       "command": "concurrent -k \"npm run dev:server\" \"npm run dev:client:hot\""
+    },
+    "build:client": {
+      "command": "webpack",
+      "env": {
+        "NODE_ENV": "production"
+      }
     }
   },
   "repository": {
