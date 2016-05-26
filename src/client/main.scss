@@ -19,6 +19,7 @@ h3 {
   align-items: center;
 
   margin: 1em 0 0 0;
+  padding: 1em 0 0 0;
 
   form {
     width: 250px;
@@ -61,7 +62,8 @@ h3 {
   margin: 1em 0 0 0;
 
   div {
-    width: 80%;
+    max-width: 850px;
+    width: 90%;
   }
 }
 
@@ -81,6 +83,7 @@ h3 {
     align-items: center;
 
     width: 80%;
+    max-width: 950px;
 
     .stock {
       flex-basis: 150px;
