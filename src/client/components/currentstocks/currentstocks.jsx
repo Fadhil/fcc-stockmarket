@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class CurrentStocks extends Component {
   render() {
-    const { currentStocks } = this.props;
+    const { currentStocks, removeHandler } = this.props;
 
     return (
       <div>
@@ -11,7 +11,10 @@ class CurrentStocks extends Component {
           currentStocks.length > 0 ?
           currentStocks.map(s =>
             <div key={s.symbol}>
-              {s.symbol} : {s.name}
+              <div>
+                {s.symbol} : {s.name}
+                <button data-symbol={s.symbol} onClick={removeHandler}>Remove</button>
+              </div>
             </div>
           ) :
           null

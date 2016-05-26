@@ -15,8 +15,8 @@ class App extends Component {
 
     this.stateSubscription = Feathers.stateService.state$.subscribe(
       (s) => {
-        const stocks = Object.assign({}, this.state.stocks, s);
-        const updatedState = Object.assign({}, this.state, { stocks });
+        const updatedStocks = Object.assign({}, s);
+        const updatedState = Object.assign({}, this.state, { stocks: updatedStocks });
         this.setState(updatedState);
       }
     );
@@ -37,8 +37,9 @@ class App extends Component {
     Feathers.getStock(s);
   }
 
-  handleRemoveStock(s) {
-    console.log('#handleRemoveStock', s);
+  handleRemoveStock(e) {
+    const { target: { dataset: { symbol } } } = e;
+    Feathers.removeStock(symbol);
   }
 
   render() {
@@ -59,6 +60,7 @@ class App extends Component {
               })) :
               []
           }
+          removeHandler={this.handleRemoveStock}
         />
       </div>
     );
