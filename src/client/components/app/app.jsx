@@ -46,8 +46,6 @@ class App extends Component {
 
     return (
       <div>
-        <p>number of stocks: {Object.keys(stocks).length}</p>
-
         <AddStock handler={this.handleAddStock} />
 
         <StockChart stocks={stocks} />

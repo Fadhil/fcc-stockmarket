@@ -17,7 +17,9 @@ class Service {
 
   get(id) {
     const url = `${quandl.rootUrl}/datasets/WIKI/${id}.json`;
-    const target = `${url}?start_date=2016-01-01&order=asc&api_key=${quandl.key}`;
+    const collapse = 'collapse=monthly';
+    const date = 'start_date=2015-01-01&end_date=2016-01-01';
+    const target = `${url}?${collapse}&${date}&order=asc&api_key=${quandl.key}`;
     return got(target)
       .then(response => response.body);
   }

@@ -40,7 +40,7 @@ class AddStock extends Component {
 
         <div>
           <input
-            currentValue={textInput}
+            value={textInput}
             onChange={this.handleTextInput}
             type="text"
           />

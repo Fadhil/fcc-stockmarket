@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class CurrentStocks extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { currentStocks } = this.props;
 
