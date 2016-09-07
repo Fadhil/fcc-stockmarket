@@ -9,6 +9,8 @@
 # Output directories & files
 /build/**
 .webpack.json
+dist/**/*.*
+!dist/.gitkeep
 
 # Dependency directories
 /node_modules
