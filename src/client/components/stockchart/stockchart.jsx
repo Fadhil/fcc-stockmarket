@@ -23,7 +23,8 @@ class StockChart extends Component {
     // const labels = stocks[symbols[0]].data.map(d => d[0]);
     const labels = months.slice(0);
     const datasets = symbols.map((s, i) => {
-      const data = stocks[s].data.map(d => d[4]);
+      const data = stocks[s].data.map(d => d.close);
+
       return Object.assign({}, {
         label: s,
         fillColor: 'rgba(0, 0, 0, 0)',

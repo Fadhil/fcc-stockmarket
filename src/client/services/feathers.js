@@ -19,30 +19,39 @@ function FeathersService() {
   this.stateService = StateService;
 
   this.stockService = this.app.service('stock');
+  this.serverStore = this.app.service('memorystore');
 }
 
 FeathersService.prototype.initialize = function initialize() {
-  this.stockService.on('created', (d) => {
+  // this.stockService.on('created', (d) => {
+    // this.stateService.setStock(d);
+  // });
+
+  // this.stockService.on('removed', (d) => {
+    // this.stateService.removeStock(d);
+  // });
+
+  this.serverStore.on('patched', (d) => {
     this.stateService.setStock(d);
   });
 
-  this.stockService.on('removed', (d) => {
+  this.serverStore.on('removed', (d) => {
     this.stateService.removeStock(d);
   });
 };
 
 FeathersService.prototype.getStock = function getStock(id) {
-  return this.stockService.get(id)
-    .then(result => this.stateService.setStock(result));
+  return this.stockService.get(id);
+    // .then(result => this.stateService.setStock(result));
 };
 
 FeathersService.prototype.removeStock = function removeStock(id) {
-  return this.stockService.remove(id);
+  return this.serverStore.remove(id);
     // .then(result => this.stateService.removeStock(result));
 };
 
 FeathersService.prototype.synchronize = function synchronize() {
-  return this.stockService.find()
+  return this.serverStore.find()
     .then(result => this.stateService.sync(result));
 };
 

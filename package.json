@@ -22,8 +22,6 @@
     "test:client:watch": "better-npm-run test:client:watch",
     "test:server": "better-npm-run test:server",
     "test:server:watch": "better-npm-run test:server:watch",
-    "test:client:sanity": "better-npm-run test:client:sanity",
-    "test:server:sanity": "better-npm-run test:server:sanity",
     "tdd:client": "better-npm-run tdd:client",
     "tdd:client:hot": "better-npm-run tdd:client:hot",
     "tdd:server": "better-npm-run tdd:server",
@@ -89,20 +87,6 @@
       "command": "mocha -w \"src/server/**/*.spec.js\"",
       "env": {
         "NODE_ENV": "test"
-      }
-    },
-    "test:client:sanity": {
-      "command": "karma start",
-      "env": {
-        "NODE_ENV": "test",
-        "SANITY": "enabled"
-      }
-    },
-    "test:server:sanity": {
-      "command": "mocha src/server/sanity.spec.js",
-      "env": {
-        "NODE_ENV": "test",
-        "SANITY": "enabled"
       }
     },
     "tdd:client": {

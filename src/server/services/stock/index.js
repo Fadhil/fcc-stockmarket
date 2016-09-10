@@ -11,29 +11,44 @@ class Service {
     this.state = {};
   }
 
-  find() {
-    return Promise.resolve(this.state);
-  }
+  // find(params) {}
 
   get(id) {
     const url = `${quandl.rootUrl}/datasets/WIKI/${id}.json`;
-    const collapse = 'collapse=monthly';
-    const date = 'start_date=2015-01-01&end_date=2016-01-01';
-    const target = `${url}?${collapse}&${date}&order=asc&api_key=${quandl.key}`;
-    return got(target)
-      .then(response => response.body);
-  }
 
-  create(data) {
-    const stock = Object.assign({}, data);
-    const updatedState = Object.assign({}, this.state, stock);
-    this.state = updatedState;
-    return Promise.resolve(stock);
-  }
+    // QUERY STRING:
+    // collapse: 'monthly',
+    // start_date: '2015-01-01',
+    // end_date: '2016-01-01',
+    // order: 'asc',
+    // api_key: quandl.key
+    return got(url, {
+      json: true,
+      query: {
+        collapse: 'monthly',
+        start_date: '2015-01-01',
+        end_date: '2016-01-01',
+        column_index: 4, // closing price only
+        order: 'asc',
+        api_key: quandl.key
+      }
+    })
+      .then(response => {
+        const original = Object.assign({}, response.body.dataset);
 
-  remove(id) {
-    delete this.state[id];
-    return Promise.resolve(id);
+        const formatted = Object.assign({}, {
+          symbol: original.dataset_code,
+          name: original.name,
+          startDate: original.start_date,
+          endDate: original.end_date,
+          data: original.data.map(d => Object.assign({}, {
+            date: d[0],
+            close: d[1]
+          }))
+        });
+
+        return formatted;
+      });
   }
 }
 
