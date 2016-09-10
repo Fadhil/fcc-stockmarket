@@ -1,8 +1,18 @@
 {
     "extends": "airbnb",
     "plugins": [
-        "react"
+        "react",
+        "jsx-a11y",
+        "import"
     ],
+    "env": {
+      "mocha": true,
+      "browser": true
+    },
+    "globals": {
+      "expect": true,
+      "sinon": true
+    },
     "rules": {
       "comma-dangle": [0],
       "react/prefer-stateless-function": [0],
@@ -12,6 +22,14 @@
       "no-underscore-dangle": [0],
       "react/prop-types": [0],
       "spaced-comment": [0],
-      "no-confusing-arrow": [0]
+      "no-confusing-arrow": [0],
+      "brace-style": [1, "stroustrup"],
+      "no-unused-vars": [1, { "args": "none" }],
+      "no-param-reassign": [0],
+      "no-class-assign": [0],
+      "linebreak-style": [0],
+      "react/jsx-filename-extension": [0],
+      "import/no-extraneous-dependencies": [0],
+      "new-cap": [0]
     }
 }

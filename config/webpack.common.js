@@ -29,7 +29,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loader: 'source-map-loader',
         exclude: [
-          path.join(__dirname, '..', 'node_modules', 'rxjs')
+          path.join(helpers.modulesDir, 'rxjs')
         ]
       }
     ],
@@ -44,7 +44,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css!postcss'),
         include: [
           path.join(helpers.sourceDir, 'vendor.js'),
-          path.join(__dirname, '..', 'node_modules', 'normalize.css')
+          path.join(helpers.modulesDir, 'normalize.css')
         ]
       },
       {
@@ -64,7 +64,7 @@ module.exports = {
       template: path.join(helpers.sourceDir, 'index.html'),
       chunksSortMode: 'dependency'
     }),
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('[name].[hash].css')
   ],
 
   node: {

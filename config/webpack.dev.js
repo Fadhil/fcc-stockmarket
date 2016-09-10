@@ -18,7 +18,7 @@ if (helpers.isHot) devPlugins.push(new webpack.HotModuleReplacementPlugin());
 
 const hotEntry = {
   reacthotloader: 'react-hot-loader/patch',
-  webpackdevserver: 'webpack-dev-server/client?http://localhost:8080',
+  webpackdevserver: `webpack-dev-server/client?http://${helpers.host}:${helpers.port}`,
   onlydevserver: 'webpack/hot/only-dev-server',
   polyfills: path.join(helpers.sourceDir, 'polyfills.js'),
   vendor: path.join(helpers.sourceDir, 'vendor.js'),
@@ -43,7 +43,6 @@ module.exports = webpackMerge(commonConfig, {
     historyApiFallback: true,
     hot: helpers.isHot,
     inline: true,
-    progress: true,
     stats: {
       chunks: false,
       colors: true,

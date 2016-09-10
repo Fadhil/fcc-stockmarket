@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const commonConfig = require('./webpack.common');
 const helpers = require('./helpers');
@@ -10,8 +11,8 @@ module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
   output: {
     path: helpers.outputDir,
-    filename: '[name].js',
-    sourceMapFilename: '[name].map',
+    filename: '[name].[hash].js',
+    sourceMapFilename: '[name].[hash].map',
     chunkFilename: '[name].[id].chunk.js'
   },
   plugins: [
@@ -25,7 +26,8 @@ module.exports = webpackMerge(commonConfig, {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+    new ExtractTextPlugin('[name].[hash].css')
   ],
   node: {
     global: 'window',
