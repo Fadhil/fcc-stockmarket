@@ -13,6 +13,7 @@ Do you have Skype or Google Hangouts? We'd like to talk about using this name.
 Here's my email: fadhil <dot> luqman <at> gmail <dot> com
 My skype and github are the same email.
 
-
+Actually, to prove that we are from jomcode, you can actually send me 
+an email at fadhil <at> jomcode <dot> com.!
 
 
